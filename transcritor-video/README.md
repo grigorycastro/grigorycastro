@@ -8,25 +8,38 @@ A transcrição roda localmente no computador (usando o modelo Whisper via
 pagamento. Só é necessário ter internet na primeira vez que o programa rodar, para baixar o modelo
 de transcrição (depois disso funciona offline).
 
-## Como gerar o executável (.exe) para Windows
+## Link para baixar (mande este link para ela)
 
-O `.exe` precisa ser gerado em um computador Windows (não é possível gerar um `.exe` do Windows a
-partir de Linux/Mac). Passos, em um Windows com [Python 3.10+](https://www.python.org/downloads/)
-instalado:
+O `.exe` é gerado automaticamente pelo GitHub Actions (em uma máquina Windows) e publicado como
+Release pública neste repositório. Ela não precisa de conta no GitHub, é só clicar no link:
+
+**https://github.com/grigorycastro/grigorycastro/releases/latest/download/TranscritorDeVideo.exe**
+
+Esse link é fixo: sempre baixa a versão mais recente, mesmo quando o programa for atualizado no
+futuro. (O build leva alguns minutos para ficar pronto depois de um push — veja o andamento em
+https://github.com/grigorycastro/grigorycastro/actions.)
+
+## Passo a passo para ela (usuária comum do Windows)
+
+1. Clicar no link acima para baixar o arquivo `TranscritorDeVideo.exe`.
+2. O Windows/navegador pode mostrar um aviso de "arquivo não é baixado com frequência" ou o
+   SmartScreen pode avisar "O Windows protegeu seu PC" — isso é normal para um `.exe` novo sem
+   assinatura digital paga. Clicar em **"Mais informações"** e depois em **"Executar assim mesmo"**.
+3. Dar duplo clique no arquivo para abrir o programa (não precisa instalar nada).
+4. Clicar em **"Escolher vídeo..."** e selecionar o arquivo de vídeo.
+5. Clicar em **"Transcrever"** e aguardar (pode levar alguns minutos, dependendo do tamanho do
+   vídeo e do computador). Na primeira vez, o programa baixa o modelo de transcrição, então é
+   preciso estar conectado à internet nesse momento.
+6. Clicar em **"Salvar como .txt"** para salvar a transcrição onde ela quiser.
+
+## Como gerar o executável manualmente (opcional)
+
+Isso já acontece sozinho pelo GitHub Actions a cada atualização do código, mas se quiser gerar
+localmente em um Windows com [Python 3.10+](https://www.python.org/downloads/):
 
 1. Copie a pasta `transcritor-video` para o computador Windows.
 2. Dê duplo clique em `build.bat` (ou rode-o em um terminal).
-3. Aguarde a instalação e a geração do executável — vai aparecer em `dist\TranscritorDeVideo.exe`.
-4. Copie `TranscritorDeVideo.exe` para o computador da sua esposa. Não precisa instalar Python nem
-   mais nada nela — é só dar duplo clique no `.exe`.
-
-## Como usar o programa
-
-1. Abrir `TranscritorDeVideo.exe`.
-2. Clicar em **"Escolher vídeo..."** e selecionar o arquivo de vídeo.
-3. Clicar em **"Transcrever"** e aguardar (pode levar alguns minutos, dependendo do tamanho do
-   vídeo e do computador).
-4. Clicar em **"Salvar como .txt"** para salvar a transcrição.
+3. O executável aparece em `dist\TranscritorDeVideo.exe`.
 
 ## Observações
 
