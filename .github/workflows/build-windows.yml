@@ -49,6 +49,7 @@ jobs:
             --collect-all tqdm `
             --collect-all packaging `
             --collect-all yaml `
+            --collect-all truststore `
             transcritor_video.py
 
       - name: Publicar release no GitHub

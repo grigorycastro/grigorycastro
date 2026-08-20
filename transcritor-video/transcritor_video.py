@@ -1,5 +1,9 @@
 """Transcritor de Vídeo - interface simples para transcrever vídeos em português."""
 
+import truststore
+
+truststore.inject_into_ssl()
+
 import os
 import queue
 import threading

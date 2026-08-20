@@ -24,6 +24,7 @@ pyinstaller --onefile --windowed --name "TranscritorDeVideo" ^
   --collect-all tqdm ^
   --collect-all packaging ^
   --collect-all yaml ^
+  --collect-all truststore ^
   transcritor_video.py
 
 echo.
