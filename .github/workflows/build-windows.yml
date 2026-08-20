@@ -32,7 +32,13 @@ jobs:
 
       - name: Gerar executável com PyInstaller
         run: |
-          pyinstaller --onefile --windowed --name "TranscritorDeVideo" transcritor_video.py
+          pyinstaller --onefile --windowed --name "TranscritorDeVideo" `
+            --collect-all numpy `
+            --collect-all ctranslate2 `
+            --collect-all av `
+            --collect-all tokenizers `
+            --collect-all faster_whisper `
+            transcritor_video.py
 
       - name: Publicar release no GitHub
         uses: softprops/action-gh-release@v2
