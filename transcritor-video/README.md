@@ -3,10 +3,9 @@
 Interface bem simples para transcrever vídeos em português: escolher o vídeo, clicar em
 "Transcrever" e salvar o texto em um arquivo `.txt`.
 
-A transcrição roda localmente no computador (usando o modelo Whisper via
-[faster-whisper](https://github.com/SYSTRAN/faster-whisper)) — não precisa de chave de API nem de
-pagamento. Só é necessário ter internet na primeira vez que o programa rodar, para baixar o modelo
-de transcrição (depois disso funciona offline).
+A transcrição roda 100% localmente no computador (usando o modelo Whisper via
+[faster-whisper](https://github.com/SYSTRAN/faster-whisper)) — não precisa de chave de API, de
+pagamento nem de internet: o modelo de transcrição já vem embutido dentro do `.exe`.
 
 ## Link para baixar (mande este link para ela)
 
@@ -28,8 +27,7 @@ https://github.com/grigorycastro/grigorycastro/actions.)
 3. Dar duplo clique no arquivo para abrir o programa (não precisa instalar nada).
 4. Clicar em **"Escolher vídeo..."** e selecionar o arquivo de vídeo.
 5. Clicar em **"Transcrever"** e aguardar (pode levar alguns minutos, dependendo do tamanho do
-   vídeo e do computador). Na primeira vez, o programa baixa o modelo de transcrição, então é
-   preciso estar conectado à internet nesse momento.
+   vídeo e do computador). Não precisa de internet — o modelo já vem dentro do programa.
 6. Clicar em **"Salvar como .txt"** para salvar a transcrição onde ela quiser.
 
 ## Como gerar o executável manualmente (opcional)
@@ -43,8 +41,9 @@ localmente em um Windows com [Python 3.10+](https://www.python.org/downloads/):
 
 ## Observações
 
-- Na primeira transcrição, o programa baixa o modelo de linguagem (alguns centenas de MB) — é
-  necessário estar conectado à internet nesse momento.
-- Para vídeos longos, use um computador com internet estável na primeira execução e tenha
-  paciência: em CPUs comuns a transcrição pode demorar mais que a duração do próprio vídeo.
+- O `.exe` é grande (mais de 500 MB) porque o modelo de transcrição vem embutido dentro dele — é
+  proposital, assim o programa funciona sem internet e sem depender de antivírus/firewall
+  liberarem acesso à Hugging Face.
+- Para vídeos longos, tenha paciência: em CPUs comuns a transcrição pode demorar mais que a
+  duração do próprio vídeo.
 - Formatos de vídeo suportados: mp4, mkv, avi, mov, webm, m4v, wmv.

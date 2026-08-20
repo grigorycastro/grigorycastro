@@ -30,9 +30,14 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Baixar modelo Whisper (para embutir no executável, sem depender da internet da usuária)
+        run: |
+          python -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='Systran/faster-whisper-small', local_dir='whisper_model')"
+
       - name: Gerar executável com PyInstaller
         run: |
           pyinstaller --onefile --windowed --name "TranscritorDeVideo" `
+            --add-data "whisper_model;whisper_model" `
             --collect-all numpy `
             --collect-all ctranslate2 `
             --collect-all av `

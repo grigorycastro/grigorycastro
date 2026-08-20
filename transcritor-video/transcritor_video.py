@@ -6,12 +6,21 @@ truststore.inject_into_ssl()
 
 import os
 import queue
+import sys
 import threading
 import tkinter as tk
 from tkinter import filedialog, messagebox, scrolledtext, ttk
 
 MODELO = "small"  # tiny, base, small, medium, large-v3 (maior = mais preciso e mais lento)
 IDIOMA = "pt"
+
+
+def caminho_do_modelo():
+    """No executável, o modelo vem embutido junto (não depende de internet).
+    Rodando o script direto (modo desenvolvimento), baixa da Hugging Face."""
+    if getattr(sys, "frozen", False):
+        return os.path.join(sys._MEIPASS, "whisper_model")
+    return MODELO
 
 TIPOS_DE_VIDEO = [
     ("Arquivos de vídeo", "*.mp4 *.mkv *.avi *.mov *.webm *.m4v *.wmv"),
@@ -103,7 +112,7 @@ class Aplicativo(tk.Tk):
             if self.modelo_whisper is None:
                 from faster_whisper import WhisperModel
 
-                self.modelo_whisper = WhisperModel(MODELO, device="cpu", compute_type="int8")
+                self.modelo_whisper = WhisperModel(caminho_do_modelo(), device="cpu", compute_type="int8")
 
             self.fila.put(("status", "Transcrevendo... isso pode levar alguns minutos."))
 

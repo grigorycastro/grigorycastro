@@ -7,7 +7,10 @@ call venv\Scripts\activate.bat
 pip install --upgrade pip
 pip install -r requirements.txt
 
+python -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='Systran/faster-whisper-small', local_dir='whisper_model')"
+
 pyinstaller --onefile --windowed --name "TranscritorDeVideo" ^
+  --add-data "whisper_model;whisper_model" ^
   --collect-all numpy ^
   --collect-all ctranslate2 ^
   --collect-all av ^
