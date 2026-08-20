@@ -13,6 +13,17 @@ pyinstaller --onefile --windowed --name "TranscritorDeVideo" ^
   --collect-all av ^
   --collect-all tokenizers ^
   --collect-all faster_whisper ^
+  --collect-all huggingface_hub ^
+  --collect-all requests ^
+  --collect-all urllib3 ^
+  --collect-all certifi ^
+  --collect-all charset_normalizer ^
+  --collect-all idna ^
+  --collect-all filelock ^
+  --collect-all fsspec ^
+  --collect-all tqdm ^
+  --collect-all packaging ^
+  --collect-all yaml ^
   transcritor_video.py
 
 echo.
