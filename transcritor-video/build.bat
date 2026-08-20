@@ -9,7 +9,7 @@ pip install -r requirements.txt
 
 python -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='Systran/faster-whisper-small', local_dir='whisper_model')"
 
-pyinstaller --onefile --windowed --name "TranscritorDeVideo" ^
+pyinstaller --onedir --windowed --name "TranscritorDeVideo" ^
   --add-data "whisper_model;whisper_model" ^
   --collect-all numpy ^
   --collect-all ctranslate2 ^
@@ -30,6 +30,9 @@ pyinstaller --onefile --windowed --name "TranscritorDeVideo" ^
   --collect-all truststore ^
   transcritor_video.py
 
+powershell -Command "Compress-Archive -Path 'dist\TranscritorDeVideo\*' -DestinationPath 'TranscritorDeVideo.zip' -Force"
+
 echo.
-echo Pronto! O executavel esta em dist\TranscritorDeVideo.exe
+echo Pronto! O executavel esta em dist\TranscritorDeVideo\TranscritorDeVideo.exe
+echo O .zip para distribuir esta em TranscritorDeVideo.zip
 pause

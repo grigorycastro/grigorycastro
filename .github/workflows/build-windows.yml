@@ -36,7 +36,7 @@ jobs:
 
       - name: Gerar executável com PyInstaller
         run: |
-          pyinstaller --onefile --windowed --name "TranscritorDeVideo" `
+          pyinstaller --onedir --windowed --name "TranscritorDeVideo" `
             --add-data "whisper_model;whisper_model" `
             --collect-all numpy `
             --collect-all ctranslate2 `
@@ -57,11 +57,15 @@ jobs:
             --collect-all truststore `
             transcritor_video.py
 
+      - name: Compactar em .zip (exe na raiz, bibliotecas em _internal)
+        run: |
+          Compress-Archive -Path "dist\TranscritorDeVideo\*" -DestinationPath "TranscritorDeVideo.zip"
+
       - name: Publicar release no GitHub
         uses: softprops/action-gh-release@v2
         with:
           tag_name: build-${{ github.run_number }}
           name: "Transcritor de Vídeo (Windows) - build ${{ github.run_number }}"
-          files: transcritor-video/dist/TranscritorDeVideo.exe
+          files: transcritor-video/TranscritorDeVideo.zip
           make_latest: true
           token: ${{ secrets.GITHUB_TOKEN }}
